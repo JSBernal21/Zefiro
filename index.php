@@ -14,7 +14,6 @@ if (isset($_GET["salir"])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>proyecto</title>
@@ -23,7 +22,7 @@ if (isset($_GET["salir"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
+<body>
     <?php
     $PaginasSinAutenticacion = array(
         "presentacion/autenticar.php",
@@ -53,7 +52,7 @@ if (isset($_GET["salir"])) {
             echo "<div class='container fw-bold'>Error404: Pagina no Encontrada </div>";
         }
     }
-    echo ("autenticar = <a href='?pid=".base64_encode("presentacion/autenticar.php")."'>AUTENTICAR</a>")
-    ?>
-
+    echo ("autenticar = <a href='?pid=" . base64_encode("presentacion/autenticar.php") . "'>AUTENTICAR</a>")
+        ?>
+</body>
 </html>

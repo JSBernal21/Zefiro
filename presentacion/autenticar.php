@@ -34,21 +34,23 @@ if (isset($_POST["autenticar"])) {
 
 ?>
 
-<body class="bg-warning-subtle">
-    <div class="container my-5 bg-warning-subtle p-5">
+<body class="bg-light">
+    <div class="container my-4 p-5">
         <div class="row">
             <div class="col-sm-4 col-md-5 col-lg-6">
                 <div class="my-5 text-center fw-bold mx-2">
-                    BIENVENIDO A ....
+                    BIENVENIDO A ZEFIRO
                 </div>
                 <div class="my-5 text-center mx-2">
                     LOGO
                 </div>
             </div>
-            <div class="col-sm-8 col-md-7 col-lg-6">
+            <div class="col-sm-8 col-md-7 col-lg-6 ">
                 <div class="card shadow-lg rounded-4 m-2 border border-danger-subtle">
-                    <div class="card-head rounded-top-4 p-3 bg-warning text-center">
-                        hola
+                    <div class="bg-primary rounded-top-4 bg-opacity-100">
+                        <div class="card-head rounded-top-4 p-3 bg-danger bg-opacity-50 text-center">
+                            INICIAR SESION
+                        </div>
                     </div>
                     <div class="card-body">
                         <form action="?pid=<?php echo base64_encode("presentacion/autenticar.php") ?>" method="post">
@@ -64,7 +66,8 @@ if (isset($_POST["autenticar"])) {
                             <?php
                             ?>
                             <div class="text-ligth text-end">
-                                <button type="submit" class="btn btn-warning" name="autenticar"> Iniciar Sesion </button>
+                                <button type="submit" class="btn btn-warning" name="autenticar"> Iniciar Sesion
+                                </button>
                             </div>
                         </form>
                         <div class="text-center my-2">
