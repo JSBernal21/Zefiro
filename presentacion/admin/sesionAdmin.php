@@ -9,7 +9,7 @@ if ($_SESSION["rol"] != 'admin') {
     }
 }else{
 
-echo $_SESSION["rol"] != 'admin'
+echo $_SESSION["rol"] != 'admin';
 ?>
 <h1>ADMIN</h1><?php
 }?>
