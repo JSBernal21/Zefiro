@@ -12,8 +12,9 @@ if (isset($_GET["salir"])) {
 }
 
 ?>
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -31,6 +32,7 @@ if (isset($_GET["salir"])) {
         "presentacion/autenticar.php",
         "presentacion/inicio.php",
         "presentacion/noAutorizado.php",
+        "presentacion/pasajero/registroCliente.php",
 
     );
 
@@ -38,6 +40,7 @@ if (isset($_GET["salir"])) {
         "presentacion/admin/sesionAdmin.php",
         "presentacion/piloto/sesionPiloto.php",
         "presentacion/pasajero/sesionPasajero.php",
+        
     );
     if (!isset($_GET["pid"])) {
         include("presentacion/inicio.php");
@@ -55,8 +58,38 @@ if (isset($_GET["salir"])) {
             echo "<div class='container fw-bold'>Error404: Pagina no Encontrada </div>";
         }
     }
-    echo ("autenticar = <a href='?pid=" . base64_encode("presentacion/autenticar.php") . "'>AUTENTICAR</a>")
-        ?>
+    ?>
+    <footer class="text-white py-3 position-relative">
+        <div class="w-100 h-100 position-absolute bg-primary"></div>
+        <div class="w-100 h-100 position-absolute bg-danger opacity-50"></div>
+        <div class="container position-relative">
+
+            <hr class="border-white mb-3">
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div class="d-flex align-items-center gap-2">
+                    <img src="img/logoLetras.png" alt="Logo Zefiro" height="40">
+                    <p class="mx-5 my-1 fs-4"><strong>© 2025 Zefiro Aerolinea, Inc</strong></p>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <a href="https://www.instagram.com/" target="_blank" class="text-white fs-4">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="text-white fs-4">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank" class="text-white fs-4">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://co.linkedin.com/" target="_blank" class="text-white fs-4">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

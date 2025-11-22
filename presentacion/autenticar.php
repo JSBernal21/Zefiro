@@ -36,20 +36,21 @@ if (isset($_POST["autenticar"])) {
 
 <body class="bg-light">
     <div class="container my-4 p-5">
+
         <div class="row">
-            <div class="col-sm-4 col-md-5 col-lg-6">
+            <div class="col-sm-4 col-md-5 col-lg-6 col-xl-5">
                 <div class="my-5 text-center fw-bold mx-2">
-                    BIENVENIDO A ZEFIRO
+                    BIENVENIDO A:
                 </div>
-                <div class="my-5 text-center mx-2">
-                    LOGO
+                <div class="my-5 rounded text-center mx-2">
+                    <img src="img/logoAzul.png" class="rounded-circle img-fluid">
                 </div>
             </div>
-            <div class="col-sm-8 col-md-7 col-lg-6 ">
+            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-7">
                 <div class="card shadow-lg rounded-4 m-2 border border-danger-subtle">
                     <div class="bg-primary rounded-top-4 bg-opacity-100">
-                        <div class="card-head rounded-top-4 p-3 bg-danger bg-opacity-50 text-center">
-                            INICIAR SESION
+                        <div class="card-head rounded-top-4 p-3 bg-danger bg-opacity-50 text-center fw-bold text-light">
+                            AUTENTICAR
                         </div>
                     </div>
                     <div class="card-body">
@@ -66,13 +67,19 @@ if (isset($_POST["autenticar"])) {
                             <?php
                             ?>
                             <div class="text-ligth text-end">
-                                <button type="submit" class="btn btn-warning" name="autenticar"> Iniciar Sesion
+
+                                <button type="submit" class="btn" name="autenticar">
+                                    <div class="bg-primary rounded-4">
+                                        <div class="bg-danger bg-opacity-50 p-2 rounded-4 fw-bold text-light">Iniciar
+                                            Sesion</div>
+                                    </div>
                                 </button>
+
                             </div>
                         </form>
                         <div class="text-center my-2">
                             <span>¿No tienes una cuenta? <a
-                                    href="?pid=<?php echo base64_encode("presentacion/cliente/registrarCliente.php") ?>"
+                                    href="?pid=<?php echo base64_encode("presentacion/pasajero/registroCliente.php") ?>"
                                     class="text-decoration-none">Regístrate aquí</a></span>
                         </div>
                         <div class="text-center my-2">
