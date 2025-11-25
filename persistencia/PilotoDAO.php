@@ -19,5 +19,11 @@ class PilotoDAO{
             from piloto
             where correo='".$this->correo."' and clave=md5('".$this -> clave."')";
     }
+    public function consultarPorId()
+    {
+        return "select nombre, apellido, correo
+            from Piloto
+            where idPiloto=" . $this->id;
+    }
 }
 ?>

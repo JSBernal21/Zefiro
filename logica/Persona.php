@@ -5,6 +5,7 @@ class Persona{
     protected $apellido;
     protected $correo; 
     protected $clave; 
+    private $imagen;
     public function __construct($id="",$nombre="",$apellido="",$correo="",$clave=""){
         $this->id=$id;
         $this -> nombre= $nombre;
@@ -54,6 +55,13 @@ class Persona{
     }
 
     /**
+     * @return mixed
+     */
+    public function getImagen(){
+        return $this -> imagen;
+    }
+
+    /**
      * @param mixed $nombre
      */
     public function setId($id)
@@ -91,6 +99,9 @@ class Persona{
     public function setClave($clave)
     {
         $this->clave = $clave;
+    }
+    public function setImagen(){
+        $this -> imagen;
     }
 }
 ?>

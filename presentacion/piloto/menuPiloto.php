@@ -1,6 +1,6 @@
 <?php 
-$admin=new Administrador($_SESSION["id"]);
-$admin->consultarPorId();
+$piloto=new Piloto($_SESSION["id"]);
+$piloto->consultarPorId();
 ?>
 <nav class="navbar navbar-expand-lg position-relative">
     <div class="w-100 h-100 position-absolute bg-primary"></div>
@@ -52,8 +52,8 @@ $admin->consultarPorId();
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-                            class="fa-solid fa-user-circle me-2"></i>Administrador:
-                        <?php echo $admin->getNombre() . " " . $admin->getApellido() ?>
+                            class="fa-solid fa-user-circle me-2"></i>Piloto:
+                        <?php echo $piloto->getNombre() . " " . $piloto->getApellido() ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-pen me-2"></i> Editar

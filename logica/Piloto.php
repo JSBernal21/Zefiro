@@ -23,6 +23,18 @@ class Piloto extends Persona{
         }
         
     }
+    public function consultarPorId()
+    {
+        $conexion = new Conexion();
+        $pilotoDao = new PilotoDAO($this->id);
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDao->consultarPorId());
+        $tupla = $conexion->registro();
+        $this->nombre = $tupla[0];
+        $this->apellido = $tupla[1];
+        $this->correo = $tupla[2];
+        $conexion->cerrar();
+    }
     /**
      * @return mixed
      */

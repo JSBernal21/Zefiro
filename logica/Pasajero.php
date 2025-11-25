@@ -21,5 +21,17 @@ class pasajero extends Persona{
         }
         
     }
+    public function consultarPorId()
+    {
+        $conexion = new Conexion();
+        $pasajeroDao = new PasajeroDAO($this->id);
+        $conexion->abrir();
+        $conexion->ejecutar($pasajeroDao->consultarPorId());
+        $tupla = $conexion->registro();
+        $this->nombre = $tupla[0];
+        $this->apellido = $tupla[1];
+        $this->correo = $tupla[2];
+        $conexion->cerrar();
+    }
 }
 ?>

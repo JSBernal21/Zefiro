@@ -22,11 +22,18 @@ class Administrador extends Persona{
         }
         
     }
-    /**
-     * @return mixed
-     */
-    public function getImagen(){
-        return $this -> imagen;
+    public function consultarPorId()
+    {
+        $conexion = new Conexion();
+        $adminDao = new AdminDAO($this->id);
+        $conexion->abrir();
+        $conexion->ejecutar($adminDao->consultarPorId());
+        $tupla = $conexion->registro();
+        $this->nombre = $tupla[0];
+        $this->apellido = $tupla[1];
+        $this->correo = $tupla[2];
+        $conexion->cerrar();
     }
+    
 }
 ?>
