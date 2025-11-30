@@ -19,6 +19,7 @@ if (isset($_GET["salir"])) {
 <head>
     <meta charset="UTF-8">
     <title>Zefiro Aerolinea</title>
+    <link href="https://use.fontawesome.com/releases/v6.7.2/css/all.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +33,8 @@ if (isset($_GET["salir"])) {
         "presentacion/autenticar.php",
         "presentacion/inicio.php",
         "presentacion/noAutorizado.php",
-        "presentacion/pasajero/registroCliente.php",
+        "presentacion/registroCliente.php",
+        "presentacion/pasajero/editarPerfilPasajero.php"
 
     );
 
