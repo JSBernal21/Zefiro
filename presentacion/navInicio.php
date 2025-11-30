@@ -25,7 +25,7 @@
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">    
                 <a class="btn btn-outline-primary text-white me-3" 
-                href="?pid=<?php echo base64_encode("presentacion/registroPasajero.php")?>">
+                href="?pid=<?php echo base64_encode("presentacion/pasajero/registroPasajero.php")?>">
                 <i class="fa-solid fa-user-plus me-3"></i>Registrarse</a>
                 <a class="btn btn-outline-primary text-white" 
                 href="?pid=<?php echo base64_encode("presentacion/autenticar.php")?>">

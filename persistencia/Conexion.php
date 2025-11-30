@@ -6,9 +6,9 @@ private $conexion;
     
     public function abrir(){
         if($_SERVER['REMOTE_ADDR'] == "::1"){
-            $this -> conexion = new mysqli("localhost", "root", "", "aerolinea");
+            //$this -> conexion = new mysqli("localhost", "root", "", "aerolinea");
             //Conexion Natalia - puerro 3305
-            //$this -> conexion = new mysqli("localhost", "root", "", "aerolinea", 3305);
+            $this -> conexion = new mysqli("localhost", "root", "", "aerolinea", 3305);
         }else{
             $this -> conexion = new mysqli("localhost", "itiud_cocinaetilica", "UXpieQ728%", "itiud_cocinaetilica");
         }

@@ -1,49 +1,52 @@
 <?php
+
 if(isset($_POST["registrar"])){
+    $idPasajero = $_POST["idPasajero"];
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
-    $TipoDocumento_idTipoDocumento = $_POST["TipoDocumento_idTipoDocumento"];    
-    $foto = "";
+    if(!empty($_FILES["foto"]["name"])){
+        $fotoNombre = time() . "." . pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);    
+        $fotoRutaLocal = $_FILES["foto"]["tmp_name"];
+        copy($fotoRutaLocal, "imagenes/" . $fotoNombre);
+    } else {
+        $fotoNombre = "patoFotoPorDefecto.png";
+    }
     $correo = $_POST["correo"];
     $clave = $_POST["clave"];
 
-        if ($yaExiste) {
-            echo "<script>
-            document.addEventListener('DOMContentLoaded', function(){
-                alert('Ese número de documento ya está registrado.');
-                document.getElementById('idDueño').focus();
-            });
-            </script>";
-        } else {
-            if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
-                $rutaLocal = $_FILES["foto"]["tmp_name"];
-                $nuevoNombre = time() . ".png";
-                $rutaServidor = "img/pasajero/" . $nuevoNombre;
-                copy($rutaLocal, $rutaServidor);
-                $foto = $nuevoNombre;
-            }
+    $pasajero = new Pasajero($idPasajero, $nombre, $apellido, $correo, $clave, $fotoNombre, 0, "");
+    $pasajero->registrar();
 
-            $dueño = new Dueño(
-            $idDueño,
-            $nombre,
-            $apellido,
-            $correo,
-            $claveHasheada,
-            $fechaNacimiento,
-            $direccion,
-            $telefono,
-            $foto,
-            $Localidad_idLocalidad,
-            $TipoDocumento_idTipoDocumento
-            );
+    $asunto = "Activacion de la cuenta - Zefiro Aerolinea";
+    $mensaje = '
+    <html>
+        <head>
+            <meta charset="UTF-8">
+        </head>
+        <body class="text-center">
+            <img src="https://p3.itiud.org/img/patoActivarCuenta.png" 
+                alt="Zefiro Logo" 
+                style="max-width: 200px; display: block; margin: 0 auto;">
+            <h2>Hola ' . $nombre . '</h2>
+            <p>Para activar su cuenta haga clic en el siguiente enlace:</p>
+            <a class="btn text-white" style="background-color:#6f42c1;"
+                href="http://p3.itiud.org/?pid=' . base64_encode("presentacion/pasajero/activarPasajero.php") . '&c=' . base64_encode($correo) . '">Activar Cuenta</a>
+        </body>
+    </html>
+    ';
+    $opciones = array(
+        "From" => "Zefiro Aerolinea <zefiroZA@zefiro.com>",
+        "Reply-To" => "no-responder@itiud.org"
+    );
+    
+    //mail($correo, $asunto, $mensaje, $opciones);
 
-            if ($dueño->insertar()) {
-                header("Location: ?pid=" . base64_encode("Presentacion/registroDueño.php") . "&exito=true");
-                exit;
-            } else {
-                $error = "Hubo un error al crear el usuario.";
-            }
-        }
+    if(mail($correo, $asunto, $mensaje, $opciones)){
+        echo "Mensaje enviado ¡Revisa tu correo!'";
+    } else {
+        echo "Error al enviar el mensaje por correo";
+    }
+    
 
 }
 
@@ -64,8 +67,19 @@ include "presentacion/navInicio.php"
                     class="img-fluid mx-auto d-block p-3"
                     style="max-height: 220px; object-fit: contain;">
 
+                <?php 
+                if(isset($_POST["crear"])){
+                    echo "<div class='alert alert-success' role='alert'>
+                            Usuario creado exitosamente!
+                            </div>";
+                }
+                ?>
                 <div class="card-body">
-                    <form action="?pid=<?php echo base64_encode("Presentacion/registroCliente.php") ?>" method="post" enctype="multipart/form-data">
+                    <form action="?pid=<?php echo base64_encode("presentacion/pasajero/registroPasajero.php") ?>" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Numero de Identificacion<span class="text-danger">*</span></label>
+                            <input type="number" id="idPasajero" name="idPasajero" class="form-control" placeholder="Ingresa tu numero de identificación" required>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Nombre/s<span class="text-danger">*</span></label>
                             <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingresa tu nombre" required>
@@ -76,7 +90,7 @@ include "presentacion/navInicio.php"
                         </div>
                         <div class="mb-3">
                             <label for="foto" class="form-label">Foto</label>
-                            <input class="form-control" name="foto" id="foto" type="file" id="formFile">
+                            <input class="form-control" name="foto" id="foto" type="file" id="formFile" accept="image/*">
                             <div class="form-text">(opcional)</div>
                         </div>
                         <div class="mb-3">
@@ -104,7 +118,3 @@ include "presentacion/navInicio.php"
         </div>
     </div>
 </div>
-<?php
-    echo ("editar Perfil = <a href='?pid=" . base64_encode("presentacion/pasajero/editarPerfilPasajero.php") . "'>editarPerfilPasajero</a>");
-    echo ("no Autorizado = <a href='?pid=" . base64_encode("presentacion/noAutorizado.php") . "'>noAutorizado</a>");
-?>

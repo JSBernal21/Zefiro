@@ -33,7 +33,7 @@ if (isset($_GET["salir"])) {
         "presentacion/autenticar.php",
         "presentacion/inicio.php",
         "presentacion/noAutorizado.php",
-        "presentacion/registroCliente.php",
+        "presentacion/pasajero/registroPasajero.php",
         "presentacion/pasajero/editarPerfilPasajero.php"
 
     );

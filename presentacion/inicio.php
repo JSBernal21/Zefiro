@@ -31,7 +31,7 @@ if (isset($_SESSION["id"])) {
                     <p>Prepara todo para tu viaje y registrate en nuestra pagina para comprar tus tiketes de manera facil y rapida.
                         <br>¡No esperes más!<br><br>
                         <a class="btn text-white" style="background-color: #6f42c1;"
-                        href="?pid=<?php echo base64_encode("presentacion/pasajero/registroCliente.php")?>">
+                        href="?pid=<?php echo base64_encode("presentacion/pasajero/registroPasajero.php")?>">
                         <i class="fa-regular fa-address-card me-2"></i>Registrarte Ahora</a>
                     </p>
                 </div>

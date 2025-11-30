@@ -19,13 +19,13 @@ class AdminDAO
     public function autenticar()
     {
         return "select idAdmin
-            from Admin
+            from P3Admin
             where correo='" . $this->correo . "' and clave=md5('" . $this->clave . "')";
     }
     public function consultarPorId()
     {
         return "select nombre, apellido, correo
-            from Admin
+            from P3Admin
             where idAdmin=" . $this->id;
     }
 }
