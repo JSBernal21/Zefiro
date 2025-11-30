@@ -4,6 +4,8 @@ require_once("logica/Seguridad.php");
 require_once("logica/Pasajero.php");
 require_once("logica/Piloto.php");
 require_once("logica/Administrador.php");
+require_once("logica/Pais.php");
+require_once("logica/Ciudad.php");
 
 session_start();
 if (isset($_GET["salir"])) {
@@ -40,7 +42,11 @@ if (isset($_GET["salir"])) {
         "presentacion/admin/sesionAdmin.php",
         "presentacion/piloto/sesionPiloto.php",
         "presentacion/pasajero/sesionPasajero.php",
-        
+        "presentacion/piloto/registrarPiloto.php",
+        "presentacion/piloto/consultarPilotos.php",
+        "presentacion/piloto/actualizarPiloto.php",
+        "presentacion/ciudad/registrarCiudades.php",
+        "presentacion/consultar/consultarCiudades.php",
     );
     if (!isset($_GET["pid"])) {
         include("presentacion/inicio.php");
@@ -49,8 +55,8 @@ if (isset($_GET["salir"])) {
         if (in_array($pid, $PaginasSinAutenticacion)) {
             include($pid);
         } else if (in_array($pid, $PaginasConAutenticacion)) {
-            if (!$_SESSION["id"]) {
-                include("presentacion/registrar");
+            if (!isset($_SESSION["id"])) {
+                include("presentacion/autenticar.php");
             } else {
                 include($pid);
             }

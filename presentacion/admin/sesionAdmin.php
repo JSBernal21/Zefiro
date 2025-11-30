@@ -9,6 +9,6 @@ if ($_SESSION["rol"] != 'admin') {
     }
 }else{
 
-include("presentacion/admin/menuAdmin.php");
+include("presentacion/inicio.php");
 
 }?>

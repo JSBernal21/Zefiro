@@ -2,9 +2,8 @@
 require_once("persistencia/Conexion.php");
 require_once("persistencia/PasajeroDAO.php");
 class pasajero extends Persona{
-    private $imagen;
-    public function __construct($id = '', $nombre = '', $apellido = '', $correo = '', $clave = ''){
-        parent::__construct($id,$nombre,$apellido,$correo,$clave);
+    public function __construct($id = '', $nombre = '', $apellido = '', $correo = '', $clave = '', $imagen = ''){
+        parent::__construct($id,$nombre,$apellido,$correo,$clave,$imagen);
     }
     public function autenticar(){
         $pasajeroDAO = new PasajeroDAO("","","",$this->correo, $this->clave );

@@ -8,7 +8,7 @@ if (isset($_SESSION["id"])) {
         } 
     }
 } else {
-    include("presentacion/menuSinSecion.php");
+    include("presentacion/menuSinSesion.php");
 }
 
 ?>

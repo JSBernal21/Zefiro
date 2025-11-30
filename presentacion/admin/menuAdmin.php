@@ -23,8 +23,8 @@ $admin->consultarPorId();
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">Pilotos</a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarTorneo.php")?>">Registrar Piloto</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarTorneoAdmin.php")?>">Consultar Pilotos</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/piloto/registrarPiloto.php")?>">Registrar Piloto</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/piloto/consultarPilotos.php")?>">Consultar Pilotos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
@@ -46,6 +46,13 @@ $admin->consultarPorId();
                     <ul class="dropdown-menu dropdown-menu-end shadow">
                         <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarPartido.php")?>">Registrar Vuelo</a></li>
                         <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarPartido.php")?>">Consultar Vuelos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Ciudades</a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/ciudad/registrarCiudades.php")?>">Registrar Ciudad</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarCiudades.php")?>">Consultar Ciudades</a></li>
                     </ul>
                 </li>
             </ul>

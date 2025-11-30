@@ -5,13 +5,14 @@ class Persona{
     protected $apellido;
     protected $correo; 
     protected $clave; 
-    private $imagen;
-    public function __construct($id="",$nombre="",$apellido="",$correo="",$clave=""){
+    protected $imagen;
+    public function __construct($id="",$nombre="",$apellido="",$correo="",$clave="",$imagen=""){
         $this->id=$id;
         $this -> nombre= $nombre;
         $this -> apellido = $apellido;
         $this -> correo = $correo;
         $this -> clave = $clave;
+        $this -> imagen = $imagen;
     }
     /**
      * @return mixed

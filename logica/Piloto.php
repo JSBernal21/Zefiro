@@ -1,11 +1,13 @@
 <?php 
-require_once("persistencia/Conexion.php");
-require_once("persistencia/PilotoDAO.php");
+require_once(__DIR__."/../persistencia/Conexion.php");
+require_once(__DIR__."/../persistencia/PilotoDAO.php");
 class Piloto extends Persona{
-    private $imagen;
-    public function __construct($id = '', $nombre = '', $apellido = '', $correo = '', $clave = '',$imagen=''){
-        parent::__construct($id,$nombre,$apellido,$correo,$clave);
-        $this->imagen = $imagen;
+    private $estado;
+    private $ciudad;
+    public function __construct($id = '', $nombre = '', $apellido = '', $correo = '', $clave = '',$imagen='', $estado='', $ciudad=''){
+        parent::__construct($id,$nombre,$apellido,$correo,$clave,$imagen);
+        $this->estado = $estado;
+        $this->ciudad = $ciudad;
     }
 
     public function autenticar(){
@@ -33,13 +35,72 @@ class Piloto extends Persona{
         $this->nombre = $tupla[0];
         $this->apellido = $tupla[1];
         $this->correo = $tupla[2];
+        $this->imagen = $tupla[3];
+        $this->ciudad = new Ciudad($tupla[4]);
+        $this->ciudad->consultarPorId();
+        $conexion->cerrar();
+    }
+    public function consultar()
+    {
+        $conexion = new Conexion();
+        $pilotoDAO = new PilotoDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->consultar());
+        $pilotos = array();
+        while (($tupla = $conexion->registro())!= null) {
+            $Ciudad=new Ciudad($tupla[6]);
+            $Ciudad->consultarPorId();
+            $piloto = new Piloto($tupla[0], $tupla[1], $tupla[2], $tupla[3], "", $tupla[4], $tupla[5], $Ciudad);
+            array_push($pilotos, $piloto);
+        }
+        $conexion->cerrar();
+        return $pilotos;
+    }
+    public function registrar()
+    {
+        $pilotoDAO = new PilotoDAO("", $this->nombre, $this->apellido, $this->correo, $this->clave, $this->imagen,"", $this->ciudad);
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->registrar());
+        $conexion->cerrar();
+    }
+    public function activar($correo)
+    {
+        $conexion = new Conexion();
+        $pilotoDAO = new PilotoDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->activar($correo));
+        $conexion->cerrar();
+    }
+    public function cambiarEstado($estado)
+    {
+        $conexion = new Conexion();
+        $pilotoDAO = new PilotoDAO($this->id, "", "", "", "", "", $estado, "");
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->cambiarEstado());
+        $conexion->cerrar();
+    }
+    public function actualizar()
+    {
+        $pilotoDAO = new PilotoDAO($this->id, $this->nombre, $this->apellido, "", "", $this->imagen, "", $this->ciudad);
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->actualizar());
         $conexion->cerrar();
     }
     /**
      * @return mixed
      */
-    public function getImagen(){
-        return $this -> imagen;
+    public function getEstado()
+    {
+        return $this->estado;
+    }  
+    /**
+     * @return mixed
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
     }
 }
 ?>

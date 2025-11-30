@@ -2,10 +2,8 @@
 require_once("persistencia/Conexion.php");
 require_once("persistencia/AdminDAO.php");
 class Administrador extends Persona{
-    private $imagen;
     public function __construct($id = '', $nombre = '', $apellido = '', $correo = '', $clave = '',$imagen=''){
-        parent::__construct($id,$nombre,$apellido,$correo,$clave);
-        $this->imagen = $imagen;
+        parent::__construct($id,$nombre,$apellido,$correo,$clave,$imagen);
     }
     public function autenticar(){
         $adminDAO = new AdminDAO("","","",$this->correo, $this->clave );

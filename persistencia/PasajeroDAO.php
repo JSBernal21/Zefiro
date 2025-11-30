@@ -13,14 +13,14 @@ class PasajeroDAO{
         $this -> clave = $clave;
     }
     public function autenticar(){
-        return "select idPasajero
-            from pasajero
+        return "select NroCedula
+            from P3Pasajero
             where correo='".$this->correo."' and clave=md5('".$this -> clave."')";
     }
     public function consultarPorId()
     {
         return "select nombre, apellido, correo
-            from Pasajero
+            from P3Pasajero
             where idPasajero=" . $this->id;
     }
 }
