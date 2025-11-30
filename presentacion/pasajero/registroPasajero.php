@@ -24,12 +24,19 @@ if(isset($_POST["registrar"])){
             <meta charset="UTF-8">
         </head>
         <body class="text-center">
-            <img src="https://p3.itiud.org/img/patoActivarCuenta.png" 
-                alt="Zefiro Logo" 
+            <img src="https://p3.itiud.org/mostrarImagenEmail.php?img=patoActivarCuenta.png" 
+                alt="Imagen Zefiro" 
                 style="max-width: 200px; display: block; margin: 0 auto;">
             <h2>Hola ' . $nombre . '</h2>
             <p>Para activar su cuenta haga clic en el siguiente enlace:</p>
-            <a class="btn text-white" style="background-color:#6f42c1;"
+            <a class="btn text-white" style="background:#6f42c1; 
+                                        color:#ffffff !important; 
+                                        padding:12px 24px; 
+                                        text-decoration:none; 
+                                        border-radius:6px; 
+                                        font-size:16px; 
+                                        font-weight:bold; 
+                                        display:inline-block;"
                 href="http://p3.itiud.org/?pid=' . base64_encode("presentacion/pasajero/activarPasajero.php") . '&c=' . base64_encode($correo) . '">Activar Cuenta</a>
         </body>
     </html>
