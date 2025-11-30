@@ -16,7 +16,7 @@ class PilotoDAO{
     }
     public function autenticar(){
         return "select idPiloto
-            from P3iloto
+            from P3Piloto
             where correo='".$this->correo."' and clave=md5('".$this -> clave."')";
     }
     public function consultarPorId()

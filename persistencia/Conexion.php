@@ -10,7 +10,7 @@ private $conexion;
             //Conexion Natalia - puerro 3305
             $this -> conexion = new mysqli("localhost", "root", "", "aerolinea", 3305);
         }else{
-            $this -> conexion = new mysqli("localhost", "itiud_cocinaetilica", "UXpieQ728%", "itiud_cocinaetilica");
+            $this -> conexion = new mysqli("localhost", "itiud_aplint2", "9IGmG24ue&", "itiud_aplint2");
         }
     }
 

@@ -7,7 +7,7 @@ $pasajero->consultarPorId();
     <div class="w-100 h-100 position-absolute bg-danger opacity-50"></div>
 
     <div class="container position-relative">
-        <a class="navbar-brand"  href="?pid=<?php echo base64_encode('presentacion/inicio.php') ?>">
+        <a class="navbar-brand"  href="?pid=<?php echo base64_encode('presentacion/pasajero/sesionPasajero.php') ?>">
             <img src="img/logoLetras.png" alt="logo Zefiro" height="50">
         </a>
 
@@ -19,33 +19,12 @@ $pasajero->consultarPorId();
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto text-end">
-                <li class="nav-item "><a class="nav-link active" href="?pid=<?php echo base64_encode("presentacion/admin/sesionAdmin.php")?>">Inicio</a></li>
+                <li class="nav-item "><a class="nav-link active" href="?pid=<?php echo base64_encode("presentacion/pasajero/sesionPasajero.php")?>">Inicio</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Pilotos</a>
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis vuelos</a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarTorneo.php")?>">Registrar Piloto</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarTorneoAdmin.php")?>">Consultar Pilotos</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Aviones</a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarEquipo.php")?>">Registrar Aviones</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarEquipoAdmin.php")?>">Consultar Aviones</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Rutas</a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarPartido.php")?>">Registrar Nueva Cuidad</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarPartido.php")?>">Lista de Rutas</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Vuelos</a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarPartido.php")?>">Registrar Vuelo</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarPartido.php")?>">Consultar Vuelos</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarTorneo.php")?>">Historial de vuelos</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarTorneoAdmin.php")?>">Check-In</a></li>
                     </ul>
                 </li>
             </ul>

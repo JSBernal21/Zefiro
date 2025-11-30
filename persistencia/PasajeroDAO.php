@@ -19,7 +19,7 @@ class PasajeroDAO{
         $this -> fechaActivacion = $fechaActivacion;
     }
     public function autenticar(){
-        return "select idPasajero
+        return "select NroCedula
             from P3Pasajero
             where correo='".$this->correo."' and clave=md5('".$this -> clave."')";
     }
@@ -27,7 +27,7 @@ class PasajeroDAO{
     {
         return "select nombre, apellido, correo
             from P3Pasajero
-            where idPasajero=" . $this->id;
+            where NroCedula=" . $this->id;
     }
     public function registrar(){
         return "insert into P3Pasajero(NroCedula, nombre, apellido, correo, clave, foto, estado, fechaActivacion)
