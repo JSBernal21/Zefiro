@@ -39,13 +39,13 @@ if(isset($_POST["registrar"])){
         "Reply-To" => "no-responder@itiud.org"
     );
     
-    //mail($correo, $asunto, $mensaje, $opciones);
+    mail($correo, $asunto, $mensaje, $opciones);
 
-    if(mail($correo, $asunto, $mensaje, $opciones)){
+    /*if(mail($correo, $asunto, $mensaje, $opciones)){
         echo "Mensaje enviado ¡Revisa tu correo!'";
     } else {
         echo "Error al enviar el mensaje por correo";
-    }
+    }*/
     
 
 }
