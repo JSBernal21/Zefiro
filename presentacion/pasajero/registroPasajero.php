@@ -34,16 +34,16 @@ if(isset($_POST["registrar"])){
         </body>
     </html>
     ';
-    $opciones = array(
-        "MIME-Version: 1.0" . "\r\n",
-        "Content-type: text/html; charset=UTF-8\r\n",
-        "From" => "Zefiro Aerolinea <contacto@itiud.org>",
-        "Reply-To" => "no-responder@itiud.org"
-    );
+    
+    $headers  = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: Zefiro Aerolinea <contacto@itiud.org>\r\n";
+    $headers .= "Reply-To: no-responder@itiud.org\r\n";
+
     
     //mail($correo, $asunto, $mensaje, $opciones);
 
-    if(mail($correo, $asunto, $mensaje, $opciones)){
+    if(mail($correo, $asunto, $mensaje, $headers)){
         echo "Mensaje enviado ¡Revisa tu correo!'";
     } else {
         echo "Error al enviar el mensaje por correo";
