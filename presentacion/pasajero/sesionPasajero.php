@@ -7,8 +7,7 @@ if ($_SESSION["rol"] != 'pasajero') {
         header("Location: ?pid=" . base64_encode("presentacion/noAutorizado.php"));
     }
 }
-
-
-
 ?>
-<h1>PASAJERO</h1>
+<body>
+<?php include 'presentacion/pasajero/menuPasajero.php'; ?>
+</body>

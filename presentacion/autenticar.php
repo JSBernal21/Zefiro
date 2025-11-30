@@ -32,6 +32,7 @@ if (isset($_POST["autenticar"])) {
     }
 }
 
+include "presentacion/navInicio.php";
 ?>
 
 <body class="bg-light">

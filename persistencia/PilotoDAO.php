@@ -26,7 +26,7 @@ class PilotoDAO{
     public function consultarPorId()
     {
         return "select nombre, apellido, correo, foto, P3UbicacionActual
-            from P3Piloto
+            from P3P3Piloto
             where idPiloto=" . $this->id;
     }
     public function registrar()
