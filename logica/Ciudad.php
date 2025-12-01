@@ -46,6 +46,19 @@ class Ciudad
         $conexion->ejecutar($ciudadDAO->registrar());
         $conexion->cerrar();
     }
+    public function buscar($busqueda){
+        $conexion = new Conexion();
+        $ciudadDAO = new CiudadDAO();
+        $conexion -> abrir();
+        $conexion -> ejecutar($ciudadDAO -> buscar($busqueda));
+        $ciudades = array();
+        while (($datos = $conexion->registro()) != null) {
+            $ciudad = new Ciudad($datos[0], $datos[1], $datos[2]);
+            array_push($ciudades, $ciudad);
+        }
+        $conexion->cerrar();
+        return $ciudades;
+    }
     /**
      * @return mixed
      */

@@ -21,4 +21,9 @@ class CiudadDAO{
         return "insert into P3Ciudad (nombre, P3pais_idPais) 
                 values ('" . $this->nombre . "', " . $this->pais . ")";
     }
+    public function buscar($busqueda){
+        return "select idCiudad, nombre, P3pais_idPais
+                from P3Ciudad
+                where nombre like '%" . $busqueda . /*"%' or apellido like '%" . $busqueda .*/ "%'";
+    }
 }

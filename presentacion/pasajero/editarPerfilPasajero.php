@@ -22,7 +22,7 @@ if(isset($_POST["editar"])){
     $clave = $_POST["clave"];
 
     $pasajeroEditado = new Pasajero("", $nombre, $apellido, $correo, $clave, $fotoNombre, "", "");
-    $pasajero->registrar();
+    $pasajero->editar();
 
 
 
