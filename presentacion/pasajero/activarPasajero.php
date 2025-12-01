@@ -1,6 +1,4 @@
 <?php 
-//require_once ("logica/Persona.php");
-//require_once ("logica/Pasajero.php");
 $correo = base64_decode($_GET["c"]);
 $pasajero = new Pasajero();
 $pasajero -> activar($correo);

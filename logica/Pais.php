@@ -4,9 +4,11 @@ require_once(__DIR__."/../persistencia/PaisDAO.php");
 class Pais{
     private $id;
     private $nombre;
-    public function __construct($id="",$nombre=""){
+    private $cantidadVuelos;
+    public function __construct($id="",$nombre="", $cantidadVuelos=""){
         $this->id=$id;
         $this -> nombre= $nombre;
+        $this -> cantidadVuelos= $cantidadVuelos;
     }
 
     public function consultar(){
@@ -31,6 +33,19 @@ class Pais{
         $this->nombre = $tupla[0];
         $conexion->cerrar();
     }
+    public function consultarVuelosPorPais(){
+        $conexion = new Conexion();
+        $paisDAO = new PaisDAO();       
+        $conexion->abrir();
+        $conexion->ejecutar($paisDAO->consultarVuelosPorPais());
+        $resultados = array();
+        while (($registro = $conexion->registro())!= null){
+            $resultado = new Pais("", $registro[0], $registro[1]);
+            array_push($resultados, $resultado);
+        }
+        $conexion->cerrar();
+        return $resultados;
+    }
     /**
      * @return mixed
      */
@@ -46,4 +61,8 @@ class Pais{
     {
         return $this->nombre;
     }
+    public function getCantidadVuelos(){
+        return $this->cantidadVuelos;
+    }
+
 }

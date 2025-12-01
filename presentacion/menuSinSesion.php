@@ -20,10 +20,10 @@
                         href="?pid=<?php echo base64_encode('presentacion/inicio.php') ?>">Inicio</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-light" href="#">Destinos</a>
+                    <a class="nav-link text-light" href="?pid=<?php echo base64_encode("presentacion/destinosInicio.php")?>">Destinos</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-light" href="#">Contacto y soporte</a>
+                    <a class="nav-link text-light" href="?pid=<?php echo base64_encode("presentacion/contactoYSoporte.php")?>">Contacto y soporte</a>
                 </li>
             </ul>
 

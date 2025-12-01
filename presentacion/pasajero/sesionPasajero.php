@@ -9,5 +9,7 @@ if ($_SESSION["rol"] != 'pasajero') {
 }
 ?>
 <body>
-<?php include 'presentacion/pasajero/menuPasajero.php'; ?>
+<?php include 'presentacion/pasajero/menuPasajero.php'; 
+include 'presentacion/pasajero/inicioPasajero.php'; 
+?>
 </body>

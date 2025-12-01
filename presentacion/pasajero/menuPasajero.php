@@ -27,6 +27,25 @@ $pasajero->consultarPorId();
                         <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarTorneoAdmin.php")?>">Check-In</a></li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Mis reservas</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Historial de vuelos</a>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+					href="#" role="button" data-bs-toggle="dropdown"
+					aria-expanded="false"> Mis vuelos </a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item"
+							href="">Mis reservas</a></li>
+						<li><a class="dropdown-item"
+							href="">Historial de vuelos</a></li>
+						<li><a class="dropdown-item"
+							href="">Check-in</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#">Something else here</a></li>
+					</ul></li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
@@ -35,7 +54,7 @@ $pasajero->consultarPorId();
                         <?php echo $pasajero->getNombre() . " " . $pasajero->getApellido() ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-pen me-2"></i> Editar
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/pasajero/editarPerfilPasajero.php")?>"><i class="fa-solid fa-user-pen me-2"></i> Editar
                                 Perfil</a></li>
                         <li>
                             <hr class="dropdown-divider">

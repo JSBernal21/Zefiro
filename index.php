@@ -26,6 +26,7 @@ if (isset($_GET["salir"])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="icon" href="img/logoSL.png">
 </head>
 
@@ -36,7 +37,7 @@ if (isset($_GET["salir"])) {
         "presentacion/inicio.php",
         "presentacion/noAutorizado.php",
         "presentacion/pasajero/registroPasajero.php",
-        "presentacion/pasajero/editarPerfilPasajero.php"
+        "presentacion/contactoYSoporte.php",
 
     );
 
@@ -44,6 +45,7 @@ if (isset($_GET["salir"])) {
         "presentacion/admin/sesionAdmin.php",
         "presentacion/piloto/sesionPiloto.php",
         "presentacion/pasajero/sesionPasajero.php",
+        "presentacion/pasajero/editarPerfilPasajero.php",        
         "presentacion/piloto/registrarPiloto.php",
         "presentacion/piloto/consultarPilotos.php",
         "presentacion/piloto/actualizarPiloto.php",

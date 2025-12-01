@@ -1,49 +1,35 @@
-<nav class="navbar navbar-expand-lg position-relative text-white">
-    <div class="w-100 h-100 position-absolute bg-primary"></div>
-    <div class="w-100 h-100 position-absolute bg-danger opacity-50"></div>
+<?php
+$id = $_SESSION["id"];
+if ($_SESSION["rol"] != "pasajero") {
+    header('Location: ?pid=' . base64_encode("noAutorizado.php"));
+}
+$pasajero = new Pasajero();
+$pasajero->consultarPorId();
 
-    <div class="container position-relative">
-        <a class="navbar-brand"  href="<?php echo base64_encode('presentacion/inicio.php') ?>">
-            <img src="img/logoLetras.png" alt="logo Zefiro" height="50">
-        </a>
+$seguridad = new Seguridad();
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+if(isset($_POST["editar"])){
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    if(!empty($_FILES["foto"]["name"])){
+        $fotoNombre = time() . "." . pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);    
+        $fotoRutaLocal = $_FILES["foto"]["tmp_name"];
+        copy($fotoRutaLocal, "imagenes/" . $fotoNombre);
+    } else {
+        $fotoNombre = "patoFotoPorDefecto.png";
+    }
+    $correo = $_POST["correo"];
+    $clave = $_POST["clave"];
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">             
-                <li class="nav-item">
-                <a class="nav-link" href="#">Mis reservas</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Historial de vuelos</a>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-					href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false"> Mis vuelos </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item"
-							href="">Mis reservas</a></li>
-						<li><a class="dropdown-item"
-							href="">Historial de vuelos</a></li>
-						<li><a class="dropdown-item"
-							href="">Check-in</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul></li>
-            </ul>
-
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">    
-                Opciones de perfil
-            </ul>
-        </div>
-    </div>
-</nav>
+    $pasajeroEditado = new Pasajero("", $nombre, $apellido, $correo, $clave, $fotoNombre, "", "");
+    $pasajero->registrar();
 
 
+
+}
+
+include ("presentacion/pasajero/menuPasajero.php");
+?>
 
 <div class="container py-4">
     <div class="row justify-content-center">
@@ -99,6 +85,3 @@
         </div>
     </div>
 </div>
-<?php
-    echo ("editar Perfil = <a href='?pid=" . base64_encode("presentacion/pasajero/editarPerfilPasajero.php") . "'>AUTENTICAR</a>")
-?>

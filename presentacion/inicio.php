@@ -11,6 +11,9 @@ if (isset($_SESSION["id"])) {
     include("presentacion/menuSinSesion.php");
 }
 
+
+$paises = new Pais();
+$vuelosPais = $paises->consultarVuelosPorPais();
 ?>
 
 <div class="container-fluid bg-primary bg-opacity-25">
@@ -58,13 +61,36 @@ if (isset($_SESSION["id"])) {
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
         <div class="card-header bg-primary bg-opacity-50">
-            <h5 class="m-0">¿No sabes a donde ir de vacaciones? Estos son los lugares mas populares</h5>
+            <h5 class="m-0">¿No sabes a donde ir de vacaciones? Estos son los paises mas populares</h5>
         </div>
         <div class="card-body">
-            <h3>En desarrollo ...</h3>
+            <div id="vuelosPorPais" style="width: 900px; height: 500px;"></div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript">
+google.charts.load('current', {'packages':['geochart']});
+google.charts.setOnLoadCallback(drawRegionsMap);
 
+function drawRegionsMap() {
+    var data = google.visualization.arrayToDataTable([
+      ['Pais', 'Cantidad de Vuelos'],
+      <?php 
+      foreach ($vuelosPais as $vp){
+        
+        echo "['" . $vp->getNombre() . "', " . $vp->getCantidadVuelos() . "],\n";
+      }
+      ?>
+    ]);
+    
+    var options = {
+      title: 'Vuelos por Pais'
+    };
+    
+    var chart = new google.visualization.GeoChart(document.getElementById('vuelosPorPais'));
+    
+    chart.draw(data, options);
+}
+</script>
 

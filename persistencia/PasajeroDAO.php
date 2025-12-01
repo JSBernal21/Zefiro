@@ -38,5 +38,12 @@ class PasajeroDAO{
                 set estado = '1', fechaActivacion = CURDATE()
                 where correo = '" . $correo . "'";
     }
+    public function editar(){
+        return "update P3Pasajero set 
+            nombre = '" . $this->nombre . "',
+            apellido = '" . $this->apellido . "',
+            clave = '" . $this->clave . "',
+            foto = '" . $this->foto . "' ";
+    }
 }
 ?>
