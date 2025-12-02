@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . "/../persistencia/Conexion.php");
 require_once(__DIR__ . "/../persistencia/CiudadDAO.php");
+require_once(__DIR__ . "/../logica/Pais.php");
 class Ciudad
 {
     private $id;

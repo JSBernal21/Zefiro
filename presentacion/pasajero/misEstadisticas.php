@@ -1,3 +1,14 @@
+<?php
+$id = $_SESSION["id"];
+if ($_SESSION["rol"] != "pasajero") {
+    header('Location: ?pid=' . base64_encode("noAutorizado.php"));
+}
+$pasajero = new Pasajero($id);
+$pasajero->consultarPorId();
+
+
+include ("presentacion/pasajero/menuPasajero.php");
+?>
 
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
@@ -14,7 +25,7 @@
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
         <div class="card-header bg-primary bg-opacity-50 text-center">
-            <h3 class="m-0">ciudades mas rranscurridas</h3>
+            <h3 class="m-0">ciudades mas transcurridas</h3>
         </div>
         <div class="card-body">
             <h4>Compra tus boletas!</h4>

@@ -55,6 +55,15 @@ class pasajero extends Persona{
         $conexion -> cerrar();
     }
 
+    public function editar()
+    {
+        $pasajeroDAO = new PasajeroDAO($this->id, $this->nombre, $this->apellido, "", "", $this->imagen, "");
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $conexion->ejecutar($pasajeroDAO->editar());
+        $conexion->cerrar();
+    }
+
     public function getEstado()
     {
         return $this->estado;

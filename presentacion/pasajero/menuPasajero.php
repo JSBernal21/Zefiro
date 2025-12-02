@@ -19,33 +19,21 @@ $pasajero->consultarPorId();
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto text-end">
-                <li class="nav-item "><a class="nav-link active" href="?pid=<?php echo base64_encode("presentacion/pasajero/sesionPasajero.php")?>">Inicio</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis vuelos</a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarTorneo.php")?>">Historial de vuelos</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarTorneoAdmin.php")?>">Check-In</a></li>
-                    </ul>
+                <li class="nav-item ">
+                    <a class="nav-link active" href="?pid=<?php echo base64_encode("presentacion/pasajero/sesionPasajero.php")?>">Inicio</a>
+                </li>               
+                <li class="nav-item">
+                <a class="nav-link" href="?pid=<?php echo base64_encode("presentacion/pasajero/misReservas.php")?>">Mis reservas</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Mis reservas</a>
+                <a class="nav-link" href="reporteVuelosPasajero.php">Historial de vuelos - PFD</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Historial de vuelos</a>
+                <a class="nav-link" href="?pid=<?php echo base64_encode("presentacion/pasajero/checkIn.php")?>">Check-in</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-					href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false"> Mis vuelos </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item"
-							href="">Mis reservas</a></li>
-						<li><a class="dropdown-item"
-							href="">Historial de vuelos</a></li>
-						<li><a class="dropdown-item"
-							href="">Check-in</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul></li>
+                <li class="nav-item">
+                <a class="nav-link" href="?pid=<?php echo base64_encode("presentacion/pasajero/misEstadisticas.php")?>">Mis Estadisticas</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"

@@ -6,6 +6,8 @@ require_once("logica/Piloto.php");
 require_once("logica/Administrador.php");
 require_once("logica/Pais.php");
 require_once("logica/Ciudad.php");
+require_once("logica/Vuelo.php");
+require_once("logica/Ruta.php");
 
 session_start();
 if (isset($_GET["salir"])) {
@@ -45,7 +47,10 @@ if (isset($_GET["salir"])) {
         "presentacion/admin/sesionAdmin.php",
         "presentacion/piloto/sesionPiloto.php",
         "presentacion/pasajero/sesionPasajero.php",
-        "presentacion/pasajero/editarPerfilPasajero.php",        
+        "presentacion/pasajero/editarPerfilPasajero.php",
+        "presentacion/pasajero/checkIn.php",
+        "presentacion/pasajero/misReservas.php", 
+        "presentacion/pasajero/misEstadisticas.php",         
         "presentacion/piloto/registrarPiloto.php",
         "presentacion/piloto/consultarPilotos.php",
         "presentacion/piloto/actualizarPiloto.php",
