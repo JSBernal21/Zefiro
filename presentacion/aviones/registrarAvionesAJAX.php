@@ -11,9 +11,8 @@ if ($_SESSION['rol'] != 'admin') {
 } else {
 
     require_once("../../logica/Pais.php");
-    $pais = new Pais();
-    $paises = $pais->consultar();
-    
+    $ciudad = new Ciudad();
+    $ciudades = $ciudad->consultar();
     ?>
 
     <div class="bloqueCiudad">
@@ -22,12 +21,16 @@ if ($_SESSION['rol'] != 'admin') {
             <label class="form-label">Nombre: </label>
             <input type="text" class="form-control border border-danger-subtle" name="nombre[]">
         </div>
+        <div class="my-3 ">
+            <label class="form-label">Cantidad de sillas: </label>
+            <input type="text" class="form-control border border-danger-subtle" name="cantidad[]">
+        </div>
         <div class="my-3">
-            <label class="form-label">Pais al que pertenece la ciudad: </label>
-            <select class="form-select mt-1 mb-2 border border-danger-subtle" name="pais[]">
+            <label class="form-label">Ubicacion Ciudad: </label>
+            <select class="form-select mt-1 mb-2 border border-danger-subtle" name="ciudad[]">
                 <?php
-                foreach ($paises as $p) {
-                    echo "<option value='" . $p->getId() . "'>" . $p->getNombre() . "</option>";
+                foreach ($ciudades as $c) {
+                    echo "<option value='" . $c->getId() . "'>" . $c->getNombre() . "</option>";
                 }
                 ?>
             </select>

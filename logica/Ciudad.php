@@ -60,6 +60,21 @@ class Ciudad
         $conexion->cerrar();
         return $ciudades;
     }
+    public function consultar(){
+        $conexion = new Conexion();
+        $ciudadDAO = new CiudadDAO();
+        $conexion -> abrir();
+        $conexion -> ejecutar($ciudadDAO -> consultar());
+        $ciudades = array();
+        while (($datos = $conexion->registro()) != null) {
+            $pais = new Pais($datos[2]);
+            $pais -> consultarPorId();
+            $ciudad = new Ciudad($datos[0], $datos[1], $pais);
+            array_push($ciudades, $ciudad);
+        }
+        $conexion->cerrar();
+        return $ciudades;
+    } 
     /**
      * @return mixed
      */

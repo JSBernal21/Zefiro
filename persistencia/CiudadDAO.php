@@ -26,4 +26,9 @@ class CiudadDAO{
                 from P3Ciudad
                 where nombre like '%" . $busqueda . /*"%' or apellido like '%" . $busqueda .*/ "%'";
     }
+    public function consultar(){
+        return "select idCiudad, nombre, P3pais_idPais
+                from P3Ciudad
+                order by nombre";
+    }
 }

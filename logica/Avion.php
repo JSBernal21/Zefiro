@@ -36,4 +36,34 @@ class Avion{
         $this->ubicacionActual = $tupla[3];
         $conexion->cerrar();
     }
+    public function registrar()
+    {
+        $conexion = new Conexion();
+        $avionDAO = new AvionDAO("", $this->nombre, $this->capacidad, $this->ubicacionActual);
+        $conexion->abrir();
+        $conexion->ejecutar($avionDAO->registrar());
+        $conexion->cerrar();
+    }
+    public function consultar(){
+        $conexion = new Conexion();
+        $avionDAO = new AvionDAO();
+        $conexion -> abrir();
+        $conexion -> ejecutar($avionDAO -> consultar());
+        $aviones = array();
+        while (($datos = $conexion->registro()) != null) {
+            $ciudad = new Ciudad($datos[3]);
+            $ciudad->consultarPorId();
+            $avion = new Avion($datos[0], $datos[1], $datos[2], $ciudad);
+            array_push($aviones, $avion);
+        }
+        $conexion->cerrar();
+        return $aviones;
+    }
+    public function actualizar(){
+        $conexion = new Conexion();
+        $avionDAO = new AvionDAO($this->id, $this->nombre, $this->capacidad, $this->ubicacionActual);
+        $conexion->abrir();
+        $conexion->ejecutar($avionDAO->actualizar());
+        $conexion->cerrar();
+    }
 }
