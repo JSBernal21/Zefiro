@@ -47,7 +47,7 @@
                                 <select class="form-select mt-1 mb-2 border border-danger-subtle" name="ciudad">
                                     <?php
                                     foreach ($ciudades as $c) {
-                                        echo "<option value='" . $c->getId() . "' " . ($c->getId() == $avion->getUbicacionActual() ? "selected" : "") . ">" . $c->getNombre() . "</option>";
+                                        echo "<option value='" . $c->getId() . "' " . ($c->getId() == $avion->getUbicacionActual()->getId() ? "selected" : "") . ">" . $c->getNombre() . "</option>";
                                     }
                                     ?>
                                 </select>
