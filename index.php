@@ -57,6 +57,12 @@ if (isset($_GET["salir"])) {
         "presentacion/piloto/actualizarPiloto.php",
         "presentacion/ciudad/registrarCiudades.php",
         "presentacion/consultar/consultarCiudades.php",
+        "presentacion/aviones/registrarAviones.php",
+        "presentacion/aviones/consultarAviones.php",
+        "presentacion/aviones/editarAvion.php",
+        "presentacion/registrar/registrarVuelo.php",
+        "presentacion/consultar/consultarVuelos.php",
+        
     );
     if (!isset($_GET["pid"])) {
         include("presentacion/inicio.php");

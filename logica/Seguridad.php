@@ -8,7 +8,7 @@ class Seguridad {
             "<script>", "</script>", "<script src", "<script type=",
             "SELECT", "*", "FROM", "DELETE FROM", "INSERT INTO", "DROP TABLE",
             "DROP DATABASE", "TRUNCATE TABLE", "SHOW TABLES", "SHOW DATABASE",
-            "<?php", "?>", "--", "^", "<", ">", "[", "]", "==", ";", "::","<?="
+            "<?php", "?>", "--", "^", "<", ">", "[", "]", "==", ";", "::","<?=","or 1=1","OR 1=1",
         ];
 
         $cadena = str_ireplace($buscar, "", $cadena);
