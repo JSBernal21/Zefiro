@@ -33,7 +33,8 @@ class Avion{
         $tupla = $conexion -> registro();
         $this->nombre = $tupla[1];
         $this->capacidad = $tupla[2];
-        $this->ubicacionActual = $tupla[3];
+        $this->ubicacionActual = new Ciudad($tupla[3]);
+        $this->ubicacionActual->consultarPorId();
         $conexion->cerrar();
     }
     public function registrar()
