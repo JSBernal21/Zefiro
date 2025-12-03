@@ -30,7 +30,16 @@ class CheckInDAO{
             where ci.P3Pasajero_idPasajero = " . $idPasajero . "
             group by p.nombre";
     }
-    
+    public function graficaCiudadesVisitadas($idPasajero){
+        return "select cd.nombre, p.nombre, count(v.idVuelo) as cantidadVuelos
+            from P3CheckIn ci
+            join P3Vuelo v on ci.P3Vuelo_idVuelo = v.idVuelo
+            join P3Ruta r on v.P3Ruta_idRuta = r.idRuta
+            join P3Ciudad cd on r.P3CiudadDestino = cd.idCiudad
+            join P3Pais p on cd.P3Pais_idPais = p.idPais
+            where ci.P3Pasajero_idPasajero = " . $idPasajero . "
+            group by cd.nombre";
+    }
 }
 
 ?>
