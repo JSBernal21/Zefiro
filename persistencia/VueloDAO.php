@@ -26,7 +26,7 @@ class VueloDAO{
         return "select idVuelo, fechaHoraLlegada, fechaHoraSalida, P3Ruta_idRuta, P3Aviones_idAviones, P3Copiloto, P3Piloto, Estado_idEstado
             from P3Vuelo";
     }
-    public function consultarDisponiblesPasajero($origen, $destino, $fechaIda, $fechaVuelta=null,){
+    public function consultarDisponiblesPasajero($origen, $destino, $fechaIda, $fechaVuelta=null){
         return "select v.idVuelo, a.idAsiento, a.precio, v.fechaHoraLlegada, v.fechaHoraSalida, r.idRuta, v.P3Aviones_idAviones, v.P3Copiloto, v.P3Piloto, v.Estado_idEstado
             from P3Vuelo v
             join P3Ruta r on P3Ruta_idRuta = r.idRuta
