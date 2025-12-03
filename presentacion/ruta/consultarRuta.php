@@ -3,12 +3,12 @@ if ($_SESSION['rol'] != "admin") {
     header("Location: ?pid=" . base64_encode("presentacion/noAutorizado.php"));
 } else {
 
-    $avion = new Avion();
-    $aviones = $avion->consultar();
+    $ruta = new Ruta();
+    $rutas = $ruta->consultar();
 
-    if (isset($_POST['actualizarAvion'])) {
-        $_SESSION['idAvion'] = $_POST['actualizarAvion'];
-        header("Location: ?pid=" . base64_encode("presentacion/aviones/editarAvion.php"));
+    if (isset($_POST['eliminarRuta'])) {
+        $_SESSION['idRuta'] = $_POST['eliminarRuta'];
+        header("Location: ?pid=" . base64_encode("presentacion/ruta/eliminarRuta.php"));
         exit;
     }
 
@@ -20,13 +20,13 @@ if ($_SESSION['rol'] != "admin") {
             <div class="card border-danger-subtle shadow-lg mx-5">
                 <div class="bg-primary rounded-top-4 bg-opacity-100">
                     <div class="card-head rounded-top-4 p-3 bg-danger bg-opacity-50 text-center fw-bold text-light">
-                        Aviones Registrados
+                        Rutas Registradas
                     </div>
                 </div>
                 <div class="card-body">
 
                 <?php
-                if (count($aviones) == 0) {
+                if (count($rutas) == 0) {
                     echo "<div class='alert alert-warning'>No hay registros</div>";
                 } else {
                 ?>
@@ -34,22 +34,21 @@ if ($_SESSION['rol'] != "admin") {
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Capacidad</th>
-                                <th>Ubicación Actual</th>
+                                <th>Ciudad de salida</th>
+                                <th>Ciudad de destino</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($aviones as $a) { ?>
+                        <?php foreach ($rutas as $r) { ?>
                             <tr>
-                                <td><?= $a->getNombre() ?></td>
-                                <td><?= $a->getCapacidad() ?></td>
-                                <td><?= $a->getUbicacionActual()->getNombre() ?></td>
-
+                                <td><?= $r->getDescripcion() ?></td>
+                                <td><?= $r->getOrigen()->getNombre() ?></td>
+                                <td><?= $r->getDestino()->getNombre() ?></td>
                                 <td>
                                     <form method="POST" style="display:inline;">
-                                        <button type="submit" name="actualizarAvion" value="<?= $a->getId() ?>" class="btn btn-warning btn-sm">
-                                            Editar
+                                        <button type="submit" name="eliminarRuta" value="<?= $r->getId() ?>" class="btn btn-danger btn-sm">
+                                            Eliminar
                                         </button>
                                     </form>
                                 </td>

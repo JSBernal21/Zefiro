@@ -75,6 +75,29 @@ class Ciudad
         $conexion->cerrar();
         return $ciudades;
     } 
+    public function consultarDisponibles($filtro){
+        $conexion = new Conexion();
+        $ciudadDAO = new CiudadDAO($this->id);
+        $conexion -> abrir();
+        $conexion -> ejecutar($ciudadDAO -> consultarDisponibles($filtro));
+        $ciudades = array();
+        while (($datos = $conexion->registro()) != null) {
+            $pais = new Pais($datos[2]);
+            $pais -> consultarPorId();
+            $ciudad = new Ciudad($datos[0], $datos[1], $pais);
+            array_push($ciudades, $ciudad);
+        }
+        $conexion->cerrar();
+        return $ciudades;
+    }
+    public function actualizar()
+    {
+        $conexion = new Conexion();
+        $ciudadDAO = new CiudadDAO($this->id, $this->nombre, $this->pais);
+        $conexion->abrir();
+        $conexion->ejecutar($ciudadDAO->actualizar());
+        $conexion->cerrar();
+    }
     /**
      * @return mixed
      */
