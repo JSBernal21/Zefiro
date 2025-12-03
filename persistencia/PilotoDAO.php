@@ -60,5 +60,17 @@ class PilotoDAO{
                     P3UbicacionActual = " . $this->ciudad . "
                 where idPiloto = " . $this->id;
     }
+    public function consultarPilotoPorCiudad($ciudadOrigenId)
+    {
+        return "select idPiloto, nombre, apellido, correo, foto, estado, P3UbicacionActual
+            from P3Piloto
+            where P3UbicacionActual = " . $ciudadOrigenId . "";
+    }
+    public function consultarCopilotoPorCiudad($ciudadOrigenId)
+    {
+        return "select idPiloto, nombre, apellido, correo, foto, estado, P3UbicacionActual
+            from P3Piloto
+            where P3UbicacionActual = " . $ciudadOrigenId . " and idPiloto !=  ". $this->id ;
+    }
 }
 ?>

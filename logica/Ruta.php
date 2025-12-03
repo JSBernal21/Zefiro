@@ -1,6 +1,6 @@
 <?php
-require_once ("persistencia/Conexion.php");
-require_once ("persistencia/RutaDAO.php");
+require_once (__DIR__."/../persistencia/Conexion.php");
+require_once (__DIR__."/../persistencia/RutaDAO.php");
 
 class Ruta{
     private $id;
@@ -39,6 +39,23 @@ class Ruta{
         $rutaDAO = new RutaDAO();
         $conexion->abrir();
         $conexion->ejecutar($rutaDAO->consultar());
+        $rutas = array();
+        while (($registro = $conexion->registro()) != null) {
+            $origen = new Ciudad($registro[2]);
+            $origen->consultarPorId();
+            $destino = new Ciudad($registro[3]);
+            $destino->consultarPorId();
+            $ruta = new Ruta($registro[0], $registro[1], $origen, $destino);
+            array_push($rutas, $ruta);
+        }
+        $conexion->cerrar();
+        return $rutas;
+    }
+    public function consultarRuta($filtro){
+        $conexion = new Conexion();
+        $rutaDAO = new RutaDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($rutaDAO->consultarRuta($filtro));
         $rutas = array();
         while (($registro = $conexion->registro()) != null) {
             $origen = new Ciudad($registro[2]);

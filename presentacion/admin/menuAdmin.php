@@ -44,8 +44,8 @@ $admin->consultarPorId();
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">Vuelos</a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarPartido.php")?>">Registrar Vuelo</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarPartido.php")?>">Consultar Vuelos</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/vuelo/registrarVuelo.php")?>">Registrar Vuelo</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/vuelo/consultarVuelo.php")?>">Consultar Vuelos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"

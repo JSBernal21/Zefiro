@@ -22,7 +22,12 @@ class RutaDAO{
     }
     public function consultar(){
         return "select idRuta, descripcion, P3CiudadOrigen, P3CiudadDestino
-            from P3Ruta";
+            from P3Ruta order by descripcion";
+    }
+    public function consultarRuta($filtro){
+        return "select idRuta, descripcion, P3CiudadOrigen, P3CiudadDestino
+            from P3Ruta
+            where descripcion like '%" . $filtro . "%' order by descripcion";
     }
 }
 
