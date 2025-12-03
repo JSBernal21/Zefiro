@@ -180,18 +180,38 @@ $(document).ready(function(){
         });
     });
 });
-$(document).on("click", ".btn-asientos", function () {
+$(document).on("click", ".btn-asientos", function(){
+
     let idVuelo = $(this).data("id");
 
-    $("#asientosDisponibles").html("<p>Cargando asientos...</p>");
+    $("#asientosDisponibles").html(
+        "<div class='text-center my-3'><div class='spinner-border'></div></div>"
+    );
 
     $.ajax({
-        url: "ajax/asientos.php",
+        url: "asientosAjax.php",
         type: "GET",
         data: { idVuelo: idVuelo },
-        success: function(response){
-            $("#asientosDisponibles").html(response);
+        success: function(respuesta){
+            $("#asientosDisponibles").html(respuesta);
         }
     });
 });
+$(document).on("click", "#btnReservar", function() {
+
+    let seleccion = [];
+    $(".seleccionar-asiento").each(function(){
+        let cant = parseInt($(this).val());
+        let precio = $(this).data("precio");
+        if(cant > 0){
+            seleccion.push({ precio: precio, cantidad: cant });
+        }
+    });
+    if(seleccion.length === 0){
+        alert("Debe seleccionar al menos 1 asiento para continuar.");
+        return;
+    }
+    console.log("Boletos seleccionados:", seleccion);
+});
+
 </script>

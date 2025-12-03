@@ -5,14 +5,27 @@ if ($_SESSION["rol"] != "pasajero") {
 }
 $pasajero = new Pasajero($id);
 $pasajero->consultarPorId();
-
+/*
 $tiquete = new CheckIn();
 $tiquetes = $tiquete -> graficaPaisesVisitados($id);
 
 $tiquetesCiudades = $tiquete -> graficaCiudadesVisitadas($id);
+*/
+$tiquete = new Tiquete();
+$tiquetes = $tiquete -> graficaPaisesVisitados($id);
+$tiquetesCiudades = $tiquete -> graficaCiudadesVisitadas($id);
 
 include ("presentacion/pasajero/menuPasajero.php");
+
+if(count($tiquetes) == 0){
+    echo "<div class='alert alert-info text-center mt-4'>
+            No hay información suficiente para generar estadísticas aún.
+          </div>";
+    return;
+}
 ?>
+
+
 
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
@@ -69,26 +82,27 @@ include ("presentacion/pasajero/menuPasajero.php");
     var chart = new google.charts.Bar(document.getElementById('barrasPaises'));
     chart.draw(data, google.charts.Bar.convertOptions(options));
     };
-
-    //La grafica de arbol - Ciudades
+    
+    //La grafica de arbol - general
     google.charts.load('current', {'packages':['treemap']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-    var data = google.visualization.arrayToDataTable([
+        var data = google.visualization.arrayToDataTable([
         ['Location', 'Parent', 'Tamano', 'Color'],
-        ['Pais',    null,      0,     null],
+        ['Mundo',    null,      0,     null],
         <?php 
         foreach ($tiquetes as $t){
-            echo "['" . $t->getPaises() . "', 'Pais', " . $t->getCantidadVuelos() . "," . $t->getCantidadVuelos() . "],\n";
+            echo "['" . $t->getPaises() . "', 'Mundo', " . $t->getCantidadVuelos() . "," . $t->getCantidadVuelos() . "],\n";
             foreach ($tiquetesCiudades as $tc){
                 if ($tc->getPaises() == $t->getPaises()) {
                     echo "['" . $tc->getCiudades() . "', '" . $t->getPaises() . "', " . $tc->getCantidadVuelosCiudades() . ", " . $tc->getCantidadVuelosCiudades() ."],\n";
                 }
             }
-        }      
+        }
         ?>
     ]);
+
 
     tree = new google.visualization.TreeMap(document.getElementById('arbolCiudades'));
 
@@ -100,8 +114,4 @@ include ("presentacion/pasajero/menuPasajero.php");
     });
 
     }
-
-
-    //La grafica de arbol - General
-
 </script>

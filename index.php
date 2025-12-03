@@ -9,6 +9,7 @@ require_once("logica/Ciudad.php");
 require_once("logica/Vuelo.php");
 require_once("logica/Ruta.php");
 require_once("logica/CheckIn.php");
+require_once("logica/Tiquete.php");
 
 session_start();
 if (isset($_GET["salir"])) {

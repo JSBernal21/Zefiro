@@ -36,7 +36,7 @@ class Vuelo{
         $conexion -> ejecutar($vueloDAO -> consultar());
         $vuelos = array();
         while (($datos = $conexion->registro()) != null) {
-            $vuelo = new Vuelo($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+            $vuelo = new Vuelo($datos[0], "", $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7]);
             array_push($vuelos, $vuelo);
         }
         $conexion->cerrar();
@@ -63,11 +63,11 @@ class Vuelo{
         $this->estado = $tupla[8];
         $conexion->cerrar();
     }
-    public function consultarDisponiblesPasajero($origen, $destino, $fechaIda="", $fechaVuelta=""){
+    public function consultarDisponiblesPasajero($origen, $destino, $fecha=""){
         $conexion = new Conexion();
         $conexion -> abrir();
         $vueloDAO = new VueloDAO();        
-        $conexion -> ejecutar($vueloDAO -> consultarDisponiblesPasajero($origen, $destino, $fechaIda, $fechaVuelta));
+        $conexion -> ejecutar($vueloDAO -> consultarDisponiblesPasajero($origen, $destino, $fecha));
         $vuelos = array();
         while (($datos = $conexion->registro()) != null) {
             $piloto = new Piloto($datos[8]);
