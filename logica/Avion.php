@@ -1,6 +1,6 @@
 <?php
-require_once ("persistencia/Conexion.php");
-require_once ("persistencia/AvionDAO.php");
+require_once (__DIR__."/../persistencia/Conexion.php");
+require_once (__DIR__."/../persistencia/AvionDAO.php");
 class Avion{
     private $id;
     private $nombre;
@@ -66,5 +66,21 @@ class Avion{
         $conexion->abrir();
         $conexion->ejecutar($avionDAO->actualizar());
         $conexion->cerrar();
+    }
+    public function consultarAvionPorCiudad($ciudadOrigenId)
+    {
+        $conexion = new Conexion();
+        $avionDAO = new AvionDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($avionDAO->consultarAvionPorCiudad($ciudadOrigenId));
+        $aviones = array();
+        while (($tupla = $conexion->registro())!= null) {
+            $Ciudad=new Ciudad($tupla[3]);
+            $Ciudad->consultarPorId();
+            $avion = new Avion($tupla[0], $tupla[1], $tupla[2], $Ciudad);
+            array_push($aviones, $avion);
+        }
+        $conexion->cerrar();
+        return $aviones;
     }
 }

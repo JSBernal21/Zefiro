@@ -88,6 +88,38 @@ class Piloto extends Persona{
         $conexion->ejecutar($pilotoDAO->actualizar());
         $conexion->cerrar();
     }
+    public function consultarPilotoPorCiudad($ciudadOrigenId)
+    {
+        $conexion = new Conexion();
+        $pilotoDAO = new PilotoDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->consultarPilotoPorCiudad($ciudadOrigenId));
+        $pilotos = array();
+        while (($tupla = $conexion->registro())!= null) {
+            $Ciudad=new Ciudad($tupla[6]);
+            $Ciudad->consultarPorId();
+            $piloto = new Piloto($tupla[0], $tupla[1], $tupla[2], $tupla[3], "", $tupla[4], $tupla[5], $Ciudad);
+            array_push($pilotos, $piloto);
+        }
+        $conexion->cerrar();
+        return $pilotos;
+    }
+    public function consultarCopilotoPorCiudad($ciudadOrigenId)
+    {
+        $conexion = new Conexion();
+        $pilotoDAO = new PilotoDAO($this->id);
+        $conexion->abrir();
+        $conexion->ejecutar($pilotoDAO->consultarCopilotoPorCiudad($ciudadOrigenId));
+        $pilotos = array();
+        while (($tupla = $conexion->registro())!= null) {
+            $Ciudad=new Ciudad($tupla[6]);
+            $Ciudad->consultarPorId();
+            $piloto = new Piloto($tupla[0], $tupla[1], $tupla[2], $tupla[3], "", $tupla[4], $tupla[5], $Ciudad);
+            array_push($pilotos, $piloto);
+        }
+        $conexion->cerrar();
+        return $pilotos;
+    }
     /**
      * @return mixed
      */

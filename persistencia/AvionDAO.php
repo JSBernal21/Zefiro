@@ -32,6 +32,12 @@ class AvionDAO{
                     P3UbicacionActual=" . $this->ubicacionActual . "
                 where idAviones=" . $this->id;
     }
+    public function consultarAvionPorCiudad($ciudadOrigenId){
+        return "select idAviones, nombre, capacidad, P3UbicacionActual
+                from P3Avion
+                where P3UbicacionActual=" . $ciudadOrigenId . "
+                order by nombre";
+    }
 }
 
 ?>
