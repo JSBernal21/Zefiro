@@ -6,6 +6,8 @@ if ($_SESSION["rol"] != "pasajero") {
 $pasajero = new Pasajero($id);
 $pasajero->consultarPorId();
 
+$tiquete = new CheckIn();
+$tiquetes = $tiquete -> graficaPaisesVisitados($id);
 
 include ("presentacion/pasajero/menuPasajero.php");
 ?>
@@ -13,10 +15,10 @@ include ("presentacion/pasajero/menuPasajero.php");
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
         <div class="card-header bg-primary bg-opacity-50 text-center">
-            <h3 class="m-0">Paises a los que mas he viajado</h3>
+            <h3 class="m-0"><i class="fa-solid fa-globe me-3"></i>Paises a los que he viajado</h3>
         </div>
         <div class="card-body">
-            <h4>Compra tus boletas!</h4>
+            <div id="barrasPaises" style="width: 800px; height: 600px;"></div>
         </div>
     </div>
 </div>
@@ -25,10 +27,10 @@ include ("presentacion/pasajero/menuPasajero.php");
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
         <div class="card-header bg-primary bg-opacity-50 text-center">
-            <h3 class="m-0">ciudades mas transcurridas</h3>
+            <h3 class="m-0"><i class="fa-solid fa-map-location me-3"></i>ciudades que he visitado</h3>
         </div>
         <div class="card-body">
-            <h4>Compra tus boletas!</h4>
+            <div id="arbolCiudades" style="width: 900px; height: 500px;"></div>
         </div>
     </div>
 </div>
@@ -37,10 +39,98 @@ include ("presentacion/pasajero/menuPasajero.php");
 <div class="container mx-2 mx-md-5 py-3">
     <div class="card">
         <div class="card-header bg-primary bg-opacity-50 text-center">
-            <h3 class="m-0">Año o meses o mas viajes</h3>
+            <h3 class="m-0"><i class="fa-solid fa-ranking-star me-3"></i>Resumen viajes</h3>
         </div>
         <div class="card-body">
             <h4>Compra tus boletas!</h4>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    //La grafica de Barras
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+            ['Pais', 'Vuelos'],
+            <?php 
+            foreach ($tiquetes as $t){
+            echo "['" . $t->getPaises() . "', " . $t->getCantidadVuelos() . "],\n";
+            }
+            ?>
+    ]);
+
+    var options = {
+        width: 800,
+        legend: { position: 'none' },
+        chart: {
+        title: 'Paises visitados',
+        subtitle: '' },
+        axes: {
+        x: {
+            0: { side: 'top', label: 'Paises'}
+        }
+        },
+        bar: { groupWidth: "50%" }
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('barrasPaises'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+    };
+
+    //La grafica de arbol - Ciudades
+    google.charts.load('current', {'packages':['treemap']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
+        ['Global',    null,                 0,                               0],
+        ['America',   'Global',             0,                               0],
+        ['Europe',    'Global',             0,                               0],
+        ['Asia',      'Global',             0,                               0],
+        ['Australia', 'Global',             0,                               0],
+        ['Africa',    'Global',             0,                               0],
+        ['Brazil',    'America',            11,                              10],
+        ['USA',       'America',            52,                              31],
+        ['Mexico',    'America',            24,                              12],
+        ['Canada',    'America',            16,                              -23],
+        ['France',    'Europe',             42,                              -11],
+        ['Germany',   'Europe',             31,                              -2],
+        ['Sweden',    'Europe',             22,                              -13],
+        ['Italy',     'Europe',             17,                              4],
+        ['UK',        'Europe',             21,                              -5],
+        ['China',     'Asia',               36,                              4],
+        ['Japan',     'Asia',               20,                              -12],
+        ['India',     'Asia',               40,                              63],
+        ['Laos',      'Asia',               4,                               34],
+        ['Mongolia',  'Asia',               1,                               -5],
+        ['Israel',    'Asia',               12,                              24],
+        ['Iran',      'Asia',               18,                              13],
+        ['Pakistan',  'Asia',               11,                              -52],
+        ['Egypt',     'Africa',             21,                              0],
+        ['S. Africa', 'Africa',             30,                              43],
+        ['Sudan',     'Africa',             12,                              2],
+        ['Congo',     'Africa',             10,                              12],
+        ['Zaire',     'Africa',             8,                               10]
+    ]);
+
+    tree = new google.visualization.TreeMap(document.getElementById('arbolCiudades'));
+
+    tree.draw(data, {
+        minColor: '#f00',
+        midColor: '#ddd',
+        maxColor: '#0d0',
+        headerHeight: 15,
+        fontColor: 'black',
+        showScale: true
+    });
+
+    }
+
+
+    //La grafica de arbol - General
+
+</script>

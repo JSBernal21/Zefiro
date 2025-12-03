@@ -8,6 +8,7 @@ require_once("logica/Pais.php");
 require_once("logica/Ciudad.php");
 require_once("logica/Vuelo.php");
 require_once("logica/Ruta.php");
+require_once("logica/CheckIn.php");
 
 session_start();
 if (isset($_GET["salir"])) {
