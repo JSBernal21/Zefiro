@@ -24,7 +24,7 @@ class AdminDAO
     }
     public function consultarPorId()
     {
-        return "select nombre, apellido, correo
+        return "select nombre, apellido, correo, foto
             from P3Admin
             where idAdmin=" . $this->id;
     }

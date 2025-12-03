@@ -45,23 +45,32 @@ if (isset($_GET["salir"])) {
 
     $PaginasConAutenticacion = array(
         "presentacion/admin/sesionAdmin.php",
+
         "presentacion/piloto/sesionPiloto.php",
-        "presentacion/pasajero/sesionPasajero.php",
-        "presentacion/pasajero/editarPerfilPasajero.php",
-        "presentacion/pasajero/checkIn.php",
-        "presentacion/pasajero/misReservas.php", 
-        "presentacion/pasajero/misEstadisticas.php",         
         "presentacion/piloto/registrarPiloto.php",
         "presentacion/piloto/consultarPilotos.php",
         "presentacion/piloto/actualizarPiloto.php",
+
+        "presentacion/pasajero/sesionPasajero.php",
+        "presentacion/pasajero/editarPerfilPasajero.php",
+        "presentacion/pasajero/checkIn.php",
+        "presentacion/pasajero/misReservas.php",
+        "presentacion/pasajero/misEstadisticas.php",
+        
         "presentacion/ciudad/registrarCiudades.php",
-        "presentacion/consultar/consultarCiudades.php",
+        "presentacion/ciudad/consultarCiudades.php",
+        "presentacion/ciudad/editarCiudades.php",
+
         "presentacion/aviones/registrarAviones.php",
         "presentacion/aviones/consultarAviones.php",
         "presentacion/aviones/editarAvion.php",
-        "presentacion/registrar/registrarVuelo.php",
-        "presentacion/consultar/consultarVuelos.php",
-        
+
+        "presentacion/vuelo/registrarVuelo.php",
+        "presentacion/vuelo/consultarVuelos.php",
+
+        "presentacion/ruta/registrarRuta.php",
+        "presentacion/ruta/consultarRuta.php",
+
     );
     if (!isset($_GET["pid"])) {
         include("presentacion/inicio.php");

@@ -37,8 +37,8 @@ $admin->consultarPorId();
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">Rutas</a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/registrar/registrarPartido.php")?>">Registrar Nueva Cuidad</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarPartido.php")?>">Lista de Rutas</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/ruta/registrarRuta.php")?>">Registrar Ruta</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/ruta/consultarRuta.php")?>">Lista de Rutas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
@@ -52,14 +52,13 @@ $admin->consultarPorId();
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">Ciudades</a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
                         <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/ciudad/registrarCiudades.php")?>">Registrar Ciudad</a></li>
-                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/consultar/consultarCiudades.php")?>">Consultar Ciudades</a></li>
+                        <li><a class="dropdown-item" href="?pid=<?php echo base64_encode("presentacion/ciudad/consultarCiudades.php")?>">Consultar Ciudades</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-                            class="fa-solid fa-user-circle me-2"></i>Administrador:
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false"> <img src="imagenes/admin/<?php echo $admin->getImagen() ?>" alt="User Image" height="30px" class="rounded-circle">Administrador:
                         <?php echo $admin->getNombre() . " " . $admin->getApellido() ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">

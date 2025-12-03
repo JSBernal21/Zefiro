@@ -15,6 +15,15 @@ class RutaDAO{
             from P3Ruta
             where idRuta=" . $this->id;
     }
+    public function registrar()
+    {
+        return "insert into P3Ruta(descripcion, P3CiudadOrigen, P3CiudadDestino)
+            values ('" . $this->descripcion . "', " . $this->origen . ", " . $this->destino . ")";
+    }
+    public function consultar(){
+        return "select idRuta, descripcion, P3CiudadOrigen, P3CiudadDestino
+            from P3Ruta";
+    }
 }
 
 ?>

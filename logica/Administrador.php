@@ -30,6 +30,7 @@ class Administrador extends Persona{
         $this->nombre = $tupla[0];
         $this->apellido = $tupla[1];
         $this->correo = $tupla[2];
+        $this->imagen = $tupla[3];
         $conexion->cerrar();
     }
     

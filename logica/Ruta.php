@@ -26,6 +26,38 @@ class Ruta{
         $this->destino->consultarPorId();
         $conexion->cerrar();
     }
+    public function registrar()
+    {
+        $conexion = new Conexion();
+        $rutaDAO = new RutaDAO("", $this->descripcion, $this->origen, $this->destino);
+        $conexion->abrir();
+        $conexion->ejecutar($rutaDAO->registrar());
+        $conexion->cerrar();
+    }
+    public function consultar(){
+        $conexion = new Conexion();
+        $rutaDAO = new RutaDAO();
+        $conexion->abrir();
+        $conexion->ejecutar($rutaDAO->consultar());
+        $rutas = array();
+        while (($registro = $conexion->registro()) != null) {
+            $origen = new Ciudad($registro[2]);
+            $origen->consultarPorId();
+            $destino = new Ciudad($registro[3]);
+            $destino->consultarPorId();
+            $ruta = new Ruta($registro[0], $registro[1], $origen, $destino);
+            array_push($rutas, $ruta);
+        }
+        $conexion->cerrar();
+        return $rutas;
+    }
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getDescripcion(){
+        return $this->descripcion;
+    }
 
     public function getOrigen(){
         return $this->origen;
